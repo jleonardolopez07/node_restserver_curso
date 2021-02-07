@@ -4,7 +4,15 @@ const mongoose = require('mongoose');
 const app = express();
 var bodyParser = require('body-parser');
 
-app.use(require('./routes/usuario'));
+//parse aplicacion/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse applicatios/json
+app.use(bodyParser.json({ type: 'application/*+json' }))
+
+// configuracion global de rutas
+app.use(require('./routes/index'));
+
 
 
 
